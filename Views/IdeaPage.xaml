@@ -1,0 +1,193 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="Ideas.Views.IdeaPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="696"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+    <!-- System features listbox template -->
+
+    <phone:PhoneApplicationPage.Resources>
+        <DataTemplate x:Key="SysReqsListBoxTemplate">
+            <StackPanel>
+                <Grid HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="75" />
+                        <ColumnDefinition Width="Auto"  />
+                    </Grid.ColumnDefinitions>
+
+
+                    <TextBlock 
+                        Grid.Column="1"
+                        Text="{Binding Requirement}" 
+                        FontSize="{StaticResource PhoneFontSizeMedium}" 
+                         Margin="-9,0,0,0"/>
+
+                    <Button 
+                    Grid.Column="0"
+                    x:Name="deleteSysReqButton"
+                        HorizontalContentAlignment="Left"
+                        HorizontalAlignment="Left"
+                    BorderThickness="0"
+                    Margin="-20,-20,0,0"
+                    Click="deleteSysReqButton_Click">
+                        <Image 
+                    Source="/Images/appbar.delete.rest.png"
+                    Height="50"
+                    Width="50"/>
+                    </Button>
+                </Grid>
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="UseCasesListBoxTemplate">
+            <StackPanel>
+                <Grid HorizontalAlignment="Stretch">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="75"  />
+                        <ColumnDefinition Width="Auto"  />
+                    </Grid.ColumnDefinitions>
+
+
+                    <TextBlock 
+                        Grid.Column="1"
+                        Text="{Binding UCase}" 
+                        FontSize="{StaticResource PhoneFontSizeMedium}" 
+                         Margin="-9,0,0,0" TextWrapping="Wrap" Grid.RowSpan="2" />
+
+                    <Button 
+                    Grid.Column="0"
+                    x:Name="deleteUseCaseButton"
+                        HorizontalContentAlignment="Left"
+                        HorizontalAlignment="Left"
+                    BorderThickness="0"
+                    Margin="-20,-20,0,0"
+                    Click="deleteUseCaseButton_Click">
+                        <Image 
+                    Source="/Images/appbar.delete.rest.png"
+                    Height="50"
+                    Width="50"/>
+                    </Button>
+
+                </Grid>
+            </StackPanel>
+        </DataTemplate>
+    </phone:PhoneApplicationPage.Resources>
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.Resources>
+            <DataTemplate x:Name="PickerFullModeItemTemplate">
+                <StackPanel Orientation="Horizontal" Margin="8 10 0 20">
+                    <TextBlock Text="{Binding OptionName}" Margin="8 0 0 0" FontSize="30" />
+                </StackPanel>
+            </DataTemplate>
+        </Grid.Resources>
+
+
+        <!--Pivot Control-->
+        <controls:Pivot Title="">
+            <!--Pivot item one -->
+            <controls:PivotItem Header="overview">
+                <Grid>
+                    <TextBlock Height="527" HorizontalAlignment="Left" Margin="4,4,0,0" Name="overviewTextBlock" Text="" VerticalAlignment="Top" Width="449" />
+                    <TextBlock Height="36" HorizontalAlignment="Left" Margin="18,13,0,0" Name="titleTextBlock" Text="Title:" VerticalAlignment="Top" FontSize="26" Width="181" FontFamily="Trebuchet MS" />
+                    <TextBox Height="72" HorizontalAlignment="Left" Margin="3,36,0,0" Name="titleTextBox" InputScope="Text" Text="{Binding SelectedIdea.Title, Mode=TwoWay}" VerticalAlignment="Top" Width="460" />
+                    <TextBlock FontFamily="Trebuchet MS" FontSize="26" Height="36" HorizontalAlignment="Left" Margin="18,109,0,0" Name="overviewtextBlock" Text="Overview:" VerticalAlignment="Top" Width="181" />
+                    <TextBox Height="385" HorizontalAlignment="Left" Margin="0,126,0,0" Name="overviewTextBox1" InputScope="Text" Text="{Binding SelectedIdea.Overview, Mode=TwoWay}" VerticalAlignment="Top" Width="460" TextWrapping="Wrap" DataContext="{Binding}" AcceptsReturn="True" MaxHeight="385" MaxLength="330" />
+                </Grid>
+            </controls:PivotItem>
+
+            <!--Pivot item two -->
+            <controls:PivotItem Header="system requirements">
+                <Grid>
+                    <TextBox Height="82" HorizontalAlignment="Left" Margin="-6,-7,0,0" Name="systemReqsTextBox" InputScope="Text" Text="" VerticalAlignment="Top" Width="380" TextWrapping="Wrap" AcceptsReturn="False" />
+                    <Button Content="add" Height="82" HorizontalAlignment="Left" Margin="364,-8,0,0" Name="addSysReqButton" VerticalAlignment="Top" Width="94" Click="addSysReqButton_Click"/>
+                    <ListBox
+                        ItemsSource="{Binding SelectedIdea.SystemRequirements, Mode=TwoWay}"
+                        x:Name="SysReqsListBox"
+                        ItemTemplate="{StaticResource SysReqsListBoxTemplate}" Height="423" Margin="6,69,-6,43" Background="Transparent" />
+
+
+                </Grid>
+            </controls:PivotItem>
+
+            <!--Pivot item three: Use Cases -->
+            <controls:PivotItem Header="use cases">
+                <Grid>
+                    <TextBox Height="82" HorizontalAlignment="Left" Margin="-6,-7,0,0" Name="useCaseTextBox" InputScope="Text" Text="" VerticalAlignment="Top" Width="380" TextWrapping="Wrap" AcceptsReturn="False" />
+                    <Button Content="add" Height="82" HorizontalAlignment="Left" Margin="364,-8,0,0" Name="addUseCaseButton" VerticalAlignment="Top" Width="94" Click="addUseCaseButton_Click"/>
+                    <ListBox
+                        ItemsSource="{Binding SelectedIdea.UseCases, Mode=TwoWay}"
+                        x:Name="UseCasesListBox"
+                        ItemTemplate="{StaticResource UseCasesListBoxTemplate}" Height="423" Margin="6,69,-6,43" Background="Transparent" />
+
+                </Grid>
+            </controls:PivotItem>
+
+            <!-- Pivot item four: Notes -->
+            <controls:PivotItem Header="other notes">
+                <Grid>
+                    <ScrollViewer>
+                        <TextBox  Height="530" HorizontalAlignment="Left" InputScope="Text" Margin="-6,-7,0,0" Name="notesTextBox" Text="" VerticalAlignment="Top" Width="460" AcceptsReturn="True" TextWrapping="Wrap" MaxHeight="530" MaxLength="462" />
+                    </ScrollViewer>
+                </Grid>
+            </controls:PivotItem>
+        </controls:Pivot>
+    </Grid>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+
+            <shell:ApplicationBarIconButton 
+                IconUri="/Images/appbar.save.rest.png" 
+                Text="save" 
+                x:Name="SaveItemAppBarButton"
+                Click="SaveItemAppBarButton_Click"/>
+
+
+
+            <shell:ApplicationBarIconButton 
+                IconUri="/Images/appbar.delete.rest.png" 
+                Text="delete" 
+                x:Name="deleteAppBarButton"
+                Click="deleteIdeaButton_Click"/>
+
+            <!-- Menu Items-->
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem
+                x:Name="shareIdeaSocialNetworks"
+                Text="Share idea via social networks"
+                Click="shareIdeaSocialNetworks_Click"/>
+
+                <shell:ApplicationBarMenuItem
+                    x:Name="shareIdeaEmail"
+                    Text="Share idea via email"
+                    Click="shareIdeaEmail_Click"/>
+
+                <shell:ApplicationBarMenuItem
+                    x:Name="pinToStartButton"
+                    Text="pin to start menu"
+                    Click="pinToStartButton_Click"
+                    />
+
+            </shell:ApplicationBar.MenuItems>
+
+
+
+
+        </shell:ApplicationBar>
+
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+</phone:PhoneApplicationPage>
