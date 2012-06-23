@@ -1,8 +1,8 @@
-﻿<xapCache source="C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\Bin\Debug\Ideas.xap" wasSigned="False" certificateThumbprint="" TimeStampUrl="" lastWriteTime="6/23/2012 3:44:04 PM">
-  <file source="C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\Bin\Debug\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="6/20/2012 10:05:01 PM" />
+﻿<xapCache source="C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\Bin\Release\Ideas.xap" wasSigned="False" certificateThumbprint="" TimeStampUrl="" lastWriteTime="6/23/2012 3:45:18 PM">
+  <file source="C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\Bin\Release\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="6/23/2012 3:45:17 PM" />
   <file source="C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\Tile.png" archivePath="Tile.png" lastWriteTime="6/20/2012 10:03:35 PM" />
   <file source="C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\AppList.png" archivePath="AppList.png" lastWriteTime="6/20/2012 10:03:35 PM" />
-  <file source="C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\obj\Debug\Ideas.dll" archivePath="Ideas.dll" lastWriteTime="6/23/2012 3:44:03 PM" />
+  <file source="C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\obj\Release\Ideas.dll" archivePath="Ideas.dll" lastWriteTime="6/23/2012 3:45:15 PM" />
   <file source="c:\Program Files (x86)\Microsoft SDKs\Expression\Blend\Windows Phone\v7.1\Libraries\Microsoft.Expression.Interactions.dll" archivePath="Microsoft.Expression.Interactions.dll" lastWriteTime="8/17/2011 2:48:22 AM" />
   <file source="C:\Program Files (x86)\Microsoft SDKs\Windows Phone\v7.1\Libraries\Silverlight\Microsoft.Phone.Controls.dll" archivePath="Microsoft.Phone.Controls.dll" lastWriteTime="9/15/2011 4:36:26 PM" />
   <file source="C:\Program Files (x86)\Microsoft SDKs\Windows Phone\v7.1\Toolkit\Oct11\Bin\Microsoft.Phone.Controls.Toolkit.dll" archivePath="Microsoft.Phone.Controls.Toolkit.dll" lastWriteTime="10/6/2011 1:33:14 PM" />
@@ -15,13 +15,13 @@
   <file source="C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\Images\appbar.edit.rest.png" archivePath="Images\appbar.edit.rest.png" lastWriteTime="6/20/2012 9:44:59 PM" />
   <file source="C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\Images\appbar.save.rest.png" archivePath="Images\appbar.save.rest.png" lastWriteTime="6/20/2012 9:44:59 PM" />
   <file source="C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\SplashScreenImage.jpg" archivePath="SplashScreenImage.jpg" lastWriteTime="6/20/2012 10:08:41 PM" />
-  <file source="C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\Bin\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="6/20/2012 9:26:08 PM" />
-  <file source="C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\Bin\Debug\ApplicationIcon.png" archivePath="ApplicationIcon.png" lastWriteTime="6/20/2012 9:22:33 PM" />
-  <file source="C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\Bin\Debug\Background.png" archivePath="Background.png" lastWriteTime="6/20/2012 9:22:33 PM" />
-  <file source="C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\Bin\Debug\Images\appbar.add.rest.png" archivePath="Images\appbar.add.rest.png" lastWriteTime="6/20/2012 9:44:59 PM" />
-  <file source="C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\Bin\Debug\Images\appbar.cancel.rest.png" archivePath="Images\appbar.cancel.rest.png" lastWriteTime="6/20/2012 9:44:59 PM" />
-  <file source="C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\Bin\Debug\Images\appbar.delete.rest.png" archivePath="Images\appbar.delete.rest.png" lastWriteTime="6/20/2012 9:44:59 PM" />
-  <file source="C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\Bin\Debug\Images\appbar.edit.rest.png" archivePath="Images\appbar.edit.rest.png" lastWriteTime="6/20/2012 9:44:59 PM" />
-  <file source="C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\Bin\Debug\Images\appbar.save.rest.png" archivePath="Images\appbar.save.rest.png" lastWriteTime="6/20/2012 9:44:59 PM" />
-  <file source="C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\Bin\Debug\MainPage.xaml.cs" archivePath="MainPage.xaml.cs" lastWriteTime="6/20/2012 10:11:42 PM" />
+  <file source="C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\Bin\Release\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="6/23/2012 3:45:17 PM" />
+  <file source="C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\Bin\Release\ApplicationIcon.png" archivePath="ApplicationIcon.png" lastWriteTime="6/20/2012 9:22:33 PM" />
+  <file source="C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\Bin\Release\Background.png" archivePath="Background.png" lastWriteTime="6/20/2012 9:22:33 PM" />
+  <file source="C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\Bin\Release\Images\appbar.add.rest.png" archivePath="Images\appbar.add.rest.png" lastWriteTime="6/20/2012 9:44:59 PM" />
+  <file source="C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\Bin\Release\Images\appbar.cancel.rest.png" archivePath="Images\appbar.cancel.rest.png" lastWriteTime="6/20/2012 9:44:59 PM" />
+  <file source="C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\Bin\Release\Images\appbar.delete.rest.png" archivePath="Images\appbar.delete.rest.png" lastWriteTime="6/20/2012 9:44:59 PM" />
+  <file source="C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\Bin\Release\Images\appbar.edit.rest.png" archivePath="Images\appbar.edit.rest.png" lastWriteTime="6/20/2012 9:44:59 PM" />
+  <file source="C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\Bin\Release\Images\appbar.save.rest.png" archivePath="Images\appbar.save.rest.png" lastWriteTime="6/20/2012 9:44:59 PM" />
+  <file source="C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\Bin\Release\MainPage.xaml.cs" archivePath="MainPage.xaml.cs" lastWriteTime="6/20/2012 10:11:42 PM" />
 </xapCache>

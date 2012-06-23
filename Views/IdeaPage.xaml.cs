@@ -282,5 +282,21 @@ namespace Ideas.Views
 
             }
         }
+
+        private void shareIdeaSMS_Click(object sender, EventArgs e)
+        {
+            SmsComposeTask smsTask = new SmsComposeTask();
+
+            string Idea = "I have an idea for " + (DataContext as IdeaViewModel).SelectedIdea.Title;
+
+            if ((DataContext as IdeaViewModel).SelectedIdea.Overview != "")
+                Idea += ". Basically, : " + (DataContext as IdeaViewModel).SelectedIdea.Overview;    // the overview 
+
+
+
+            smsTask.Body = Idea + ". Would you want to discuss it?"; 
+
+            smsTask.Show(); 
+        }
     }
 }
