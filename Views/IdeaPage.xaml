@@ -18,6 +18,45 @@
     <!-- System features listbox template -->
 
     <phone:PhoneApplicationPage.Resources>
+
+        <Style x:Key="SampleIconButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="{StaticResource PhoneForegroundBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+            <Setter Property="BorderThickness" Value="{StaticResource PhoneBorderThickness}"/>
+            <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}"/>
+            <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMediumLarge}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="Transparent">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="MouseOver"/>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="ContentArea">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneBackgroundBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="BackgroundBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneForegroundBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="BackgroundBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneForegroundBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Border x:Name="BackgroundBrush" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="0" Margin="{StaticResource PhoneTouchTargetOverhang}">
+                                <Grid x:Name="ContentArea" OpacityMask="{TemplateBinding Content}" Background="{TemplateBinding Foreground}"/>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <DataTemplate x:Key="SysReqsListBoxTemplate">
             <StackPanel>
                 <Grid HorizontalAlignment="Stretch">
@@ -31,20 +70,16 @@
                         Grid.Column="1"
                         Text="{Binding Requirement}" 
                         FontSize="{StaticResource PhoneFontSizeMedium}" 
-                         Margin="-9,0,0,0"/>
+                         Margin="-9,0,0,0"
+                        Width="380"
+                        TextWrapping="Wrap"/>
 
-                    <Button 
-                    Grid.Column="0"
-                    x:Name="deleteSysReqButton"
+                    <Button Style="{StaticResource SampleIconButton}" Grid.Column="0" Height="75" Width="75" x:Name="deleteSysReqButton" Margin="-20,-20,0,0"
+                        Click="deleteSysReqButton_Click"
                         HorizontalContentAlignment="Left"
                         HorizontalAlignment="Left"
-                    BorderThickness="0"
-                    Margin="-20,-20,0,0"
-                    Click="deleteSysReqButton_Click">
-                        <Image 
-                    Source="/Images/appbar.delete.rest.png"
-                    Height="50"
-                    Width="50"/>
+                        BorderThickness="0">
+                        <ImageBrush ImageSource="/Images/appbar.delete.rest.png" Stretch="None"/>
                     </Button>
                 </Grid>
             </StackPanel>
@@ -63,21 +98,20 @@
                     <TextBlock 
                         Grid.Column="1"
                         Text="{Binding UCase}" 
-                        FontSize="{StaticResource PhoneFontSizeMedium}" 
-                         Margin="-9,0,0,0" TextWrapping="Wrap" Grid.RowSpan="2" />
+                        FontSize="{StaticResource PhoneFontSizeMedium}"
+                        Width="380"
+                         Margin="-9,0,0,0" TextWrapping="Wrap" Grid.RowSpan="2"/>
 
-                    <Button 
-                    Grid.Column="0"
+                    <Button Style="{StaticResource SampleIconButton}" Grid.Column="0" Height="75" Width="75"
                     x:Name="deleteUseCaseButton"
                         HorizontalContentAlignment="Left"
                         HorizontalAlignment="Left"
                     BorderThickness="0"
                     Margin="-20,-20,0,0"
                     Click="deleteUseCaseButton_Click">
-                        <Image 
-                    Source="/Images/appbar.delete.rest.png"
-                    Height="50"
-                    Width="50"/>
+                        <ImageBrush
+                    ImageSource="/Images/appbar.delete.rest.png"
+                    Stretch="None"/>
                     </Button>
 
                 </Grid>
@@ -92,6 +126,45 @@
                     <TextBlock Text="{Binding OptionName}" Margin="8 0 0 0" FontSize="30" />
                 </StackPanel>
             </DataTemplate>
+
+            <Style x:Key="SampleIconButton" TargetType="Button">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="BorderBrush" Value="{StaticResource PhoneForegroundBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+                <Setter Property="BorderThickness" Value="{StaticResource PhoneBorderThickness}"/>
+                <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}"/>
+                <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMediumLarge}"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Grid Background="Transparent">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal"/>
+                                        <VisualState x:Name="MouseOver"/>
+                                        <VisualState x:Name="Pressed">
+                                            <Storyboard>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="ContentArea">
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneBackgroundBrush}"/>
+                                                </ObjectAnimationUsingKeyFrames>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="BackgroundBrush">
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneForegroundBrush}"/>
+                                                </ObjectAnimationUsingKeyFrames>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="BackgroundBrush">
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneForegroundBrush}"/>
+                                                </ObjectAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <Border x:Name="BackgroundBrush" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="0" Margin="{StaticResource PhoneTouchTargetOverhang}">
+                                    <Grid x:Name="ContentArea" OpacityMask="{TemplateBinding Content}" Background="{TemplateBinding Foreground}"/>
+                                </Border>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
         </Grid.Resources>
 
 
@@ -105,6 +178,7 @@
                     <TextBox Height="72" HorizontalAlignment="Left" Margin="3,36,0,0" Name="titleTextBox" InputScope="Text" Text="{Binding SelectedIdea.Title, Mode=TwoWay}" VerticalAlignment="Top" Width="460" />
                     <TextBlock FontFamily="Trebuchet MS" FontSize="26" Height="36" HorizontalAlignment="Left" Margin="18,109,0,0" Name="overviewtextBlock" Text="Overview:" VerticalAlignment="Top" Width="181" />
                     <TextBox Height="385" HorizontalAlignment="Left" Margin="0,126,0,0" Name="overviewTextBox1" InputScope="Text" Text="{Binding SelectedIdea.Overview, Mode=TwoWay}" VerticalAlignment="Top" Width="460" TextWrapping="Wrap" DataContext="{Binding}" AcceptsReturn="True" MaxHeight="385" MaxLength="330" />
+                    <toolkit:ListPicker x:Name="defaultListPicker" FullModeHeader="Share via" Visibility="Collapsed" ExpansionMode="FullScreenOnly" FontSize="36" FullModeItemTemplate="{StaticResource PickerFullModeItemTemplate}" SelectionChanged="defaultListPicker_SelectionChanged"/>
                 </Grid>
             </controls:PivotItem>
 
@@ -113,6 +187,7 @@
                 <Grid>
                     <TextBox Height="82" HorizontalAlignment="Left" Margin="-6,-7,0,0" Name="systemReqsTextBox" InputScope="Text" Text="" VerticalAlignment="Top" Width="380" TextWrapping="Wrap" AcceptsReturn="False" />
                     <Button Content="add" Height="82" HorizontalAlignment="Left" Margin="364,-8,0,0" Name="addSysReqButton" VerticalAlignment="Top" Width="94" Click="addSysReqButton_Click"/>
+                    
                     <ListBox
                         ItemsSource="{Binding SelectedIdea.SystemRequirements, Mode=TwoWay}"
                         x:Name="SysReqsListBox"
@@ -166,6 +241,11 @@
             <!-- Menu Items-->
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem
+                    x:Name="shareIdea"
+                    Text="Share idea"
+                    Click="shareIdea_Click"/>
+                
+                <!--<shell:ApplicationBarMenuItem
                 x:Name="shareIdeaSocialNetworks"
                 Text="Share idea via social networks"
                 Click="shareIdeaSocialNetworks_Click"/>
@@ -178,13 +258,13 @@
                 <shell:ApplicationBarMenuItem 
                     x:Name="shareIdeaSMS"
                     Text="Share idea via SMS"
-                    Click="shareIdeaSMS_Click"/>
+                    Click="shareIdeaSMS_Click"/>-->
 
-                <shell:ApplicationBarMenuItem
+                <!--<shell:ApplicationBarMenuItem
                     x:Name="pinToStartButton"
                     Text="pin to start menu"
                     Click="pinToStartButton_Click"
-                    />
+                    />-->
 
             </shell:ApplicationBar.MenuItems>
 

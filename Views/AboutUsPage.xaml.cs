@@ -18,11 +18,13 @@ namespace Ideas.Views
         public AboutUsPage()
         {
             InitializeComponent();
-
         }
+
+        #region View the contributors page 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("/Views/ContributorsPage.xaml", UriKind.Relative));
         }
+        #endregion 
     }
 }

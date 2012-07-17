@@ -217,7 +217,7 @@ namespace Ideas.ViewModels
         {
             var newIdea = new Idea();       // create the idea 
             SelectedIdea = newIdea;         // set to the relevant datacontext
-            this._SystemRequirements = new ObservableCollection<SystemRequirement>();
+            //this._SystemRequirements = new ObservableCollection<SystemRequirement>();       // don't think I need this... No time to see :) 
 
 
             _DB.Ideas.InsertOnSubmit(newIdea);      // Add to the database 

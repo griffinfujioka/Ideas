@@ -96,6 +96,9 @@ namespace Ideas
                         IdeasList += "\n\t- " + uc.UCase;
                 }
 
+                if (idea.Notes != "")
+                    IdeasList += "\nOther notes: " + idea.Notes; 
+
                 IdeasList += "\n";
                 i++;
 
@@ -104,6 +107,27 @@ namespace Ideas
             emailComposeTask.Body = IdeasList;
 
             emailComposeTask.Show();
+        }
+
+        /// <summary>
+        /// Navigate to the page for modifying secondary Tile properties. 
+        /// Pass a parameter that lets the SecondaryTile page know that it was navigated to from MainPage.
+        /// (DefaultTitle will equal 'FromTile' when the user navigates to the SecondaryTile page from a Tile.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonChangeSecondaryTile_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("/SecondaryTile.xaml?DefaultTitle=FromMain", UriKind.Relative));
+        }
+
+        private void feedbackButton_Click(object sender, EventArgs e)
+        {
+            EmailComposeTask emailTask = new EmailComposeTask();
+
+            emailTask.To = "wsuwpdg@hotmail.com";
+            emailTask.Subject = "Ideas";
+            emailTask.Show(); 
         }
 
     }

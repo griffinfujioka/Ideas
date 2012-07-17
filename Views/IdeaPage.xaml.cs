@@ -19,7 +19,7 @@ namespace Ideas.Views
 {
     public partial class IdeaPage : PhoneApplicationPage
     {
-        #region A list of different ways a user can share a wish: Social networks or email
+        #region A list of different ways a user can share a wish: Social networks, email or SMs
         /* -------------------------------------------------------------
          * There's got to be a better way to do this but this is what I did.... 
          * 
@@ -42,28 +42,34 @@ namespace Ideas.Views
             new ShareOption 
             {
                 OptionName = "Email"
-            } 
+            }, 
+
+            new ShareOption
+            {
+                OptionName = "SMS" 
+            }
         };
         #endregion
 
-        public ObservableCollection<SystemRequirement> SysReqsforBinding;
+        #region Constructor
         public IdeaPage()
         {
             InitializeComponent();
             DataContext = App.ViewModel;
-            SysReqsforBinding = new ObservableCollection<SystemRequirement>((DataContext as IdeaViewModel).SelectedIdea.SysReqsOC);
-
+            this.defaultListPicker.ItemsSource = shareOptions;
+ 
             #region Initialize the ShellTile + an exception handler
             ShellTile secondaryTile =
                 ShellTile.ActiveTiles.FirstOrDefault(
                 x => x.NavigationUri
-                .ToString()
-                .Contains("TileID=Secondary"));
+                .ToString() == string.Format("/Viewer.xaml?title={0}", (DataContext as IdeaViewModel).SelectedIdea.Title)); 
+                // .Contains("TileID=Secondary"));
             #endregion
 
-
         }
+        #endregion 
 
+        #region Save button click 
         private void SaveItemAppBarButton_Click(object sender, EventArgs e)
         {
             // Confirm a title is provided 
@@ -105,12 +111,14 @@ namespace Ideas.Views
             }
 
         }
+        #endregion 
 
+        #region On Navigated From 
         protected override void OnNavigatedFrom(System.Windows.Navigation.NavigationEventArgs e)
         {
-            if (DataContext != null)
+            if ((DataContext as IdeaViewModel).SelectedIdea != null)
             {
-                if (((DataContext as IdeaViewModel).SelectedIdea.Title == null) && ((DataContext as IdeaViewModel).SelectedIdea.Overview == null))
+                if (((DataContext as IdeaViewModel).SelectedIdea.Title == "") && ((DataContext as IdeaViewModel).SelectedIdea.Overview == ""))
                 {
                     // If both the name and why field are null, delete the friggin' thing 
                     (DataContext as IdeaViewModel).deleteIdea();
@@ -120,10 +128,14 @@ namespace Ideas.Views
 
             base.OnNavigatedFrom(e);
         }
+        #endregion 
 
+        #region On Navigated To 
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
-            // Fill up the system requirements listbox 
+            ShellTile TileToFind = ShellTile.ActiveTiles.FirstOrDefault(x => x.NavigationUri.ToString().Contains("DefaultTitle=FromTile"));
+
+            // Fill up controls 
             if (DataContext != null)
             {
                 if ((DataContext as IdeaViewModel).SelectedIdea.Title != null)
@@ -138,11 +150,11 @@ namespace Ideas.Views
 
             }
 
-
-
             base.OnNavigatedTo(e);
         }
+        #endregion 
 
+        #region Delete click 
         private void deleteIdeaButton_Click(object sender, EventArgs e)
         {
             MessageBoxResult m = MessageBox.Show("Are you sure you want to delete this idea?", "", MessageBoxButton.OKCancel);
@@ -154,9 +166,11 @@ namespace Ideas.Views
             (DataContext as IdeaViewModel).deleteIdea();
 
             // Put the focus back to the main page.
-            NavigationService.Navigate(new Uri("MainPage.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
         }
+        #endregion 
 
+        #region Add system requirement click 
         // Define functions for: adding/removing a system requirement 
         private void addSysReqButton_Click(object sender, RoutedEventArgs e)
         {
@@ -175,7 +189,9 @@ namespace Ideas.Views
             systemReqsTextBox.Text = "";
 
         }
+        #endregion 
 
+        #region Add use case click 
         private void addUseCaseButton_Click(object sender, RoutedEventArgs e)
         {
             string ucTitle = useCaseTextBox.Text;
@@ -186,7 +202,9 @@ namespace Ideas.Views
             }
             useCaseTextBox.Text = "";
         }
+        #endregion 
 
+        #region Delete system requirement click 
         private void deleteSysReqButton_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
@@ -202,10 +220,11 @@ namespace Ideas.Views
                 (DataContext as IdeaViewModel).RemoveSelectedReq(reqForDelete);
                 button = null;
             }
-            return;
-
+            return; 
         }
+        #endregion 
 
+        #region Delete use case click 
         private void deleteUseCaseButton_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
@@ -220,7 +239,9 @@ namespace Ideas.Views
             return;
 
         }
+        #endregion 
 
+        #region Share to social networks 
         private void shareIdeaSocialNetworks_Click(object sender, EventArgs e)
         {
             ShareStatusTask shareStatusTask = new ShareStatusTask();
@@ -229,14 +250,16 @@ namespace Ideas.Views
             shareStatusTask.Status += ". Would you like to hear more?";
             shareStatusTask.Show();
         }
+        #endregion 
 
+        #region Share via email 
         private void shareIdeaEmail_Click(object sender, EventArgs e)
         {
             // Compose an email 
             EmailComposeTask emailComposeTask = new EmailComposeTask();
             string Idea = "";
 
-            Idea += (DataContext as IdeaViewModel).SelectedIdea.Title;
+            Idea += (DataContext as IdeaViewModel).SelectedIdea.Title + "\n";
             emailComposeTask.Subject = "My " + Idea + " idea";
 
             if ((DataContext as IdeaViewModel).SelectedIdea.Overview != "")
@@ -256,33 +279,16 @@ namespace Ideas.Views
                     Idea += "\n - " + uc.UCase;
             }
 
+            if ((DataContext as IdeaViewModel).SelectedIdea.Notes != "")
+                Idea += "\nOther notes: " + (DataContext as IdeaViewModel).SelectedIdea.Notes; 
+
             emailComposeTask.Body = Idea + "\n\nvia Ideas for Windows Phone";
 
             emailComposeTask.Show();
         }
-
-        private void pinToStartButton_Click(object sender, EventArgs e)
-        {
-            ShellTile ApplicationTile = ShellTile.ActiveTiles.First();
-
-            if (ApplicationTile != null)
-            {
-                StandardTileData NewTitleData = new StandardTileData
-                {
-                    Title = (DataContext as IdeaViewModel).SelectedIdea.Title,
-                    BackgroundImage = new Uri("Tile.png", UriKind.Relative),
-
-                    BackTitle = (DataContext as IdeaViewModel).SelectedIdea.Title,
-                    BackBackgroundImage = null,
-                    BackContent = (DataContext as IdeaViewModel).SelectedIdea.Overview,
-                };
-
-                ApplicationTile.Update(NewTitleData);
-
-
-            }
-        }
-
+        #endregion 
+        
+        #region Share via sms
         private void shareIdeaSMS_Click(object sender, EventArgs e)
         {
             SmsComposeTask smsTask = new SmsComposeTask();
@@ -290,13 +296,70 @@ namespace Ideas.Views
             string Idea = "I have an idea for " + (DataContext as IdeaViewModel).SelectedIdea.Title;
 
             if ((DataContext as IdeaViewModel).SelectedIdea.Overview != "")
-                Idea += ". Basically, : " + (DataContext as IdeaViewModel).SelectedIdea.Overview;    // the overview 
-
-
+                Idea += ". Basically, " + (DataContext as IdeaViewModel).SelectedIdea.Overview;    // the overview 
 
             smsTask.Body = Idea + ". Would you want to discuss it?"; 
-
+            
             smsTask.Show(); 
         }
+        #endregion 
+
+        #region Pin to start click 
+        private void pinToStartButton_Click(object sender, EventArgs e)
+        {
+            string currentTileUrl = string.Format("/SecondaryTile.xaml?DefaultTitle=FromTile", (DataContext as IdeaViewModel).SelectedIdea.Title);
+
+            // Look to see whether the Tile already exists and if so, don't try to create it again.
+            ShellTile TileToFind = ShellTile.ActiveTiles.FirstOrDefault(x => x.NavigationUri.ToString().Contains("DefaultTitle=FromTile")); 
+
+            // Create the tile if we didn't find it 
+            if (TileToFind == null)
+            {
+                // Create the tile object and set some initial properties for the tile.
+                
+                StandardTileData NewTileData = new StandardTileData
+                {
+                    Title = (DataContext as IdeaViewModel).SelectedIdea.Title,
+                    BackgroundImage = new Uri("Tile.png", UriKind.Relative),
+
+
+                    BackTitle = (DataContext as IdeaViewModel).SelectedIdea.Title,
+                    BackBackgroundImage = null,
+                    BackContent = (DataContext as IdeaViewModel).SelectedIdea.Overview,
+                };
+                ShellTile.Create(new Uri(currentTileUrl, UriKind.Relative), NewTileData); 
+            }
+
+            
+        }
+        #endregion 
+        
+        #region List picker selection changed 
+        private void defaultListPicker_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (defaultListPicker.SelectedIndex)
+            {
+                case 0:             // blank, nothing 
+                    break; 
+                case 1:             // social networks 
+                    shareIdeaSocialNetworks_Click(sender, e); 
+                    break; 
+                case 2:             // email 
+                    shareIdeaEmail_Click(sender, e); 
+                    break; 
+                case 3:             // sms 
+                    shareIdeaSMS_Click(sender, e); 
+                    break; 
+            }
+            defaultListPicker.SelectedIndex = 0; 
+        }
+        #endregion 
+
+        #region Share idea click; Open the list picker 
+        private void shareIdea_Click(object sender, EventArgs e)
+        {
+            defaultListPicker.Open();
+        }
+        #endregion 
     }
 }

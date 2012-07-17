@@ -49,3 +49,5 @@ C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\obj\Debug\Vie
 C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\obj\Debug\Views\IdeaPage.g.i.cs
 C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\Bin\Debug\AppList.png
 C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\Bin\Debug\Tile.png
+C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\obj\Debug\ContributorsPages\HintzkePage.g.i.cs
+C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\obj\Debug\ContributorsPages\FujiokaPage.g.i.cs

@@ -23,29 +23,15 @@
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
             <TextBlock x:Name="ApplicationTitle" Text="Ideas" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock x:Name="PageTitle" Text="About Us" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock x:Name="PageTitle" Text="About" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <TextBlock Height="68" Margin="59,443,72,0" Name="createdBy" Text="Created by: WSU Windows Phone Development Group" VerticalAlignment="Top" HorizontalAlignment="Center" Width="325" TextWrapping="Wrap" />
-            <TextBlock Height="160" HorizontalAlignment="Left" Margin="27,24,0,0" Name="AboutUscontent" Text="This application is the first to be published by the Washington State University Windows Phone Development Group and serves as a brainstorming app geared towards software ideas. It is intended to be used as an idea conception and pre-modeling tool." VerticalAlignment="Top" TextWrapping="Wrap" Width="396" />
+            <TextBlock Height="68" Margin="12,443,119,0" Name="createdBy" Text="Created by: WSU Windows Phone Development Group" VerticalAlignment="Top" HorizontalAlignment="Center" Width="325" TextWrapping="Wrap" />
+            <TextBlock Height="252" HorizontalAlignment="Left" Margin="6,6,0,0" Name="AboutUscontent" Text="This application is the first to be published by the Windows Phone Development Group at Washington State University. We are an on-campus organization comprised of ambitious students striving to create innovative and useful software. This application serves as a note taking tool geared towards software ideas. It is intended to aid idea conception and refinement and also comes in handy as pre-modeling tool." VerticalAlignment="Top" TextWrapping="Wrap" Width="444" />
             <!-- Image -->
-            <Image Height="250" Source="/Ideas%20Icon%20Small.png" Margin="0,264,6,170">
-                <Image.OpacityMask>
-                    <RadialGradientBrush GradientOrigin="0.5,0.5"
-                    Center="0.5,0.2"
-                    RadiusX="0.6"
-                    RadiusY="0.5">
-                        <!-- These Grad7nt Stop colors are only changing the
-alpha values so the image fades out toward the edges. -->
-                        <GradientStop Color="#ffffffff" Offset="0.5" />
-                        <GradientStop Color="#00ffffff" Offset="0.8" />
-                    </RadialGradientBrush>
-                </Image.OpacityMask>
-            </Image>
-
-            <TextBlock Height="48" HorizontalAlignment="Left" Margin="27,190,0,0" Name="versionControl" Text="Ideas v1.0 ©" VerticalAlignment="Top" Width="396" />
+            <TextBlock Height="32" HorizontalAlignment="Left" Margin="12,405,0,0" Name="versionControl" Text="Ideas v1.0 ©" VerticalAlignment="Top" Width="136" />
             <Button Content="View Contributors" Height="72" HorizontalAlignment="Left" Margin="9,517,0,0" Name="button1" VerticalAlignment="Top" Width="441" Click="button1_Click"/>
         </Grid>
     </Grid>
