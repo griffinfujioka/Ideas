@@ -1,0 +1,64 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="Ideas.Views.AboutPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="696"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <!--Pivot Control-->
+        <controls:Pivot Title="">
+            <!--Pivot item one-->
+            <controls:PivotItem Header="about">
+                <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+                    <TextBlock Height="68" Margin="9,0,38,32" Name="createdBy" Text="Created by: WSU Windows Phone Development Group" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="385" TextWrapping="Wrap" />
+                    <TextBlock Height="311" HorizontalAlignment="Left" Margin="6,6,0,0" Name="AboutUscontent" Text="This application serves as a note taking tool geared towards software ideas. It is intended to aid idea conception and refinement and also comes in handy as pre-modeling tool.
+Share all of your ideas via e-mail or share individual ideas by SMS, social networks and e-mail. " VerticalAlignment="Top" TextWrapping="Wrap" Width="415" />
+                    <!-- Image -->
+                    <TextBlock Height="32" HorizontalAlignment="Left" Margin="12,586,0,0" Name="versionControl" Text="Ideas v1.0 ©" VerticalAlignment="Top" Width="136" />
+                   
+                </Grid>
+            </controls:PivotItem>
+
+            <!--Pivot item two-->
+            <controls:PivotItem Header="contributors">
+                <Grid x:Name="ContributorsPanel" Grid.Row="1" Margin="12,0,12,43">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="230*" />
+                        <ColumnDefinition Width="226*" />
+                    </Grid.ColumnDefinitions>
+                    <ListBox Height="262" HorizontalAlignment="Left" Margin="9,6,0,0" Name="listBox1" VerticalAlignment="Top" Width="417" SelectionChanged="listBox1_SelectionChanged" Grid.ColumnSpan="2">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}" FontSize="28" FontFamily="Segoe WP" />
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <TextBlock Height="43" HorizontalAlignment="Left" Margin="9,272,0,0" Name="textBlock1" Text="Click to learn more about the contributor." VerticalAlignment="Top" Width="444" Grid.ColumnSpan="2" />
+                    <TextBlock Height="165" HorizontalAlignment="Left" Margin="9,333,0,0" Name="textBlock2" Text="This application is the first to be published by the Windows Phone Development Group at Washington State University. We are an on-campus organization comprised of ambitious students striving to create innovative and useful software. " VerticalAlignment="Top" Grid.ColumnSpan="2" Width="407" TextWrapping="Wrap" />
+                </Grid>
+            </controls:PivotItem>
+        </controls:Pivot>
+    </Grid>
+
+    <!--Sample code showing usage of ApplicationBar-->
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem x:Name="ratereviewButton" Text="rate and review" Click="ratereviewButton_Click"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+    
+</phone:PhoneApplicationPage>

@@ -217,8 +217,6 @@ namespace Ideas.ViewModels
         {
             var newIdea = new Idea();       // create the idea 
             SelectedIdea = newIdea;         // set to the relevant datacontext
-            //this._SystemRequirements = new ObservableCollection<SystemRequirement>();       // don't think I need this... No time to see :) 
-
 
             _DB.Ideas.InsertOnSubmit(newIdea);      // Add to the database 
             _DB.SubmitChanges();                    // Save changes to the database  
@@ -230,6 +228,8 @@ namespace Ideas.ViewModels
         {
             var ideaForDelete = this.SelectedIdea;
 
+            ideaForDelete.SystemRequirements.Clear();
+            ideaForDelete.SystemRequirements = null; 
             // Remove from the observable collection 
             Ideas.Remove(ideaForDelete);
 
@@ -291,12 +291,22 @@ namespace Ideas.ViewModels
 
         public void removeAllRequirements()
         {
-            if (SelectedReq != null)
+            if(SelectedIdea != null)
             {
-                _DB.SystemRequirements.DeleteAllOnSubmit<SystemRequirement>(SystemRequirements);
-                _DB.SubmitChanges();
+            _DB.SystemRequirements.DeleteAllOnSubmit<SystemRequirement>(SelectedIdea.SystemRequirements);
+            _DB.SubmitChanges();
             }
             return;
+        }
+
+        public void removeAllUseCases()
+        {
+            if (SelectedIdea != null)
+            {
+                _DB.UseCases.DeleteAllOnSubmit<UseCase>(SelectedIdea.UseCases);
+                _DB.SubmitChanges(); 
+            }
+            return; 
         }
 
         public void AddUseCase(UseCase uc)

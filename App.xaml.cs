@@ -24,6 +24,7 @@ namespace Ideas
         public static IdeaViewModel ViewModel
         {
             get { return _ViewModel; }
+            set { _ViewModel = value; }
         }
 
         #region generated bullshit

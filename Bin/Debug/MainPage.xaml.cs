@@ -23,30 +23,31 @@ namespace Ideas
     public partial class MainPage : PhoneApplicationPage
     {
 
-        // Constructor
+        #region Constructor
         public MainPage()
         {
             InitializeComponent();
             this.DataContext = App.ViewModel;
             this.IdeasListBox.ItemsSource = App.ViewModel.Ideas;
-
         }
+        #endregion 
 
+        #region Add new idea
         private void newItemAppBarButton_Click(object sender, EventArgs e)
         {
-
             (DataContext as IdeaViewModel).AddNewIdea();
             NavigationService.Navigate(new Uri("/Views/IdeaPage.xaml", UriKind.Relative));
-
         }
+        #endregion 
 
-
+        #region View the about page
         private void aboutusMenuButton_Click(object sender, EventArgs e)
         {
-            NavigationService.Navigate(new Uri("/Views/AboutUsPage.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("/Views/AboutPage.xaml", UriKind.Relative));
         }
+        #endregion 
 
-
+        #region Listbox Selection Changed 
         // When the selection is changed, change the data context appropriately and go to the idea page 
         private void IdeaListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -60,7 +61,9 @@ namespace Ideas
             }
             return;
         }
+        #endregion 
 
+        #region On Navigated To 
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
 
@@ -69,7 +72,9 @@ namespace Ideas
             IdeasListBox.SelectedItem = null; 
             base.OnNavigatedTo(e);
         }
+        #endregion 
 
+        #region Share all ideas via email 
         private void shareIdeas_Click(object sender, EventArgs e)
         {
             EmailComposeTask emailComposeTask = new EmailComposeTask();
@@ -108,7 +113,9 @@ namespace Ideas
 
             emailComposeTask.Show();
         }
+        #endregion 
 
+        #region TODO: Secondary tile code 
         /// <summary>
         /// Navigate to the page for modifying secondary Tile properties. 
         /// Pass a parameter that lets the SecondaryTile page know that it was navigated to from MainPage.
@@ -118,17 +125,20 @@ namespace Ideas
         /// <param name="e"></param>
         private void buttonChangeSecondaryTile_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("/SecondaryTile.xaml?DefaultTitle=FromMain", UriKind.Relative));
+            this.NavigationService.Navigate(new Uri("/Views/IdeaPage.xaml?DefaultTitle=FromMain", UriKind.Relative));
         }
-
+        #endregion 
+        
+        #region Feedback button 
         private void feedbackButton_Click(object sender, EventArgs e)
         {
             EmailComposeTask emailTask = new EmailComposeTask();
 
             emailTask.To = "wsuwpdg@hotmail.com";
             emailTask.Subject = "Ideas";
-            emailTask.Show(); 
+            emailTask.Show();
         }
+        #endregion 
 
     }
 }

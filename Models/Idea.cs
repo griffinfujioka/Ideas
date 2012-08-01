@@ -96,13 +96,13 @@ namespace Ideas.Models
         public EntitySet<SystemRequirement> SystemRequirements
         {
             get { return this._SystemRequirements; }
-            //set
-            //{
-            //    NotifyPropertyChanging("SystemRequirements");
-            //    _SystemRequirements.Assign(value);
-            //    NotifyPropertyChanged("SystemRequirements");
+            set
+            {
+                NotifyPropertyChanging("SystemRequirements");
+                _SystemRequirements.Assign(value);
+                NotifyPropertyChanged("SystemRequirements");
 
-            //}
+            }
         }
 
         public ObservableCollection<SystemRequirement> SysReqsOC
@@ -144,7 +144,6 @@ namespace Ideas.Models
 
         }
         #endregion
-
 
         #region SysReq and Use Case attach and detach methods
         // Called during add operation 
@@ -195,6 +194,10 @@ namespace Ideas.Models
         }
         #endregion
 
+        public void clearSystemRequirements()
+        {
+            
+        }
 
         #region PropertyChanging, PropertyChanged overrides
         public event PropertyChangingEventHandler PropertyChanging;

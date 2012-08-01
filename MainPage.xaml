@@ -317,6 +317,15 @@
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
+        
+        <Grid.Resources>
+            <DataTemplate x:Name="PickerFullModeItemTemplate">
+                <StackPanel Orientation="Horizontal" Margin="8 10 0 20">
+                    <TextBlock Text="{Binding OptionName}" Margin="8 0 0 0" FontSize="30" />
+                </StackPanel>
+            </DataTemplate>
+        </Grid.Resources>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -340,12 +349,27 @@
                 </ListBox.ItemsPanel>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
+                        
                         <toolkit:HubTile Style="{StaticResource HubTileStyle1}" Title="{Binding Title}" Margin="5"
                                          Message="{Binding Overview}"
                                          GroupTag="IdeasGroup"
+                                         Hold="HubTile_Hold"
                                          >
+                            <toolkit:ContextMenuService.ContextMenu>
+                                <toolkit:ContextMenu VerticalOffset="20" IsZoomEnabled="True"  x:Name="menu">
+                                    <toolkit:MenuItem Name ="DeleteIdea" Header="delete idea" Click="DeleteIdea_Click"/>
+                                    <toolkit:MenuItem Name="PinToStart" Header="pin to start menu" Click="PinToStart_Click"/>
+                                    <toolkit:MenuItem Name="shareIdea" Header="share idea" Click="shareIdea_Click"/> 
+                                </toolkit:ContextMenu>
+                            </toolkit:ContextMenuService.ContextMenu>
 
                         </toolkit:HubTile>
+                        <!--<toolkit:ContextMenuService.ContextMenu>
+                            <toolkit:ContextMenu x:Name="contextMenu">
+                                <toolkit:MenuItem Name ="DeleteIdea" Header="Delete idea" Click="DeleteIdea_Click"/>
+                                <toolkit:MenuItem Name ="MenuItem" Header="Menu item" Click="MenuItem_Click"/>
+                            </toolkit:ContextMenu>
+                        </toolkit:ContextMenuService.ContextMenu>-->
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
@@ -356,6 +380,7 @@
                 x:Name="IdeaListBox"
                 ItemTemplate="{StaticResource IdeaListBoxTemplate}" Margin="6,2,6,6"
                 SelectionChanged="IdeaListBox_SelectionChanged" />-->
+            <toolkit:ListPicker x:Name="defaultListPicker" Header="share via" FullModeHeader="Share via" Visibility="Collapsed" ExpansionMode="FullScreenOnly" FontSize="36" FullModeItemTemplate="{StaticResource PickerFullModeItemTemplate}" SelectionChanged="defaultListPicker_SelectionChanged"/>
         </Grid>
     </Grid>
 

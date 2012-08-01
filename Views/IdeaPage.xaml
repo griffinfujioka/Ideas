@@ -7,7 +7,7 @@
     xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" 
     mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="696"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -178,7 +178,7 @@
                     <TextBox Height="72" HorizontalAlignment="Left" Margin="3,36,0,0" Name="titleTextBox" InputScope="Text" Text="{Binding SelectedIdea.Title, Mode=TwoWay}" VerticalAlignment="Top" Width="460" />
                     <TextBlock FontFamily="Trebuchet MS" FontSize="26" Height="36" HorizontalAlignment="Left" Margin="18,109,0,0" Name="overviewtextBlock" Text="Overview:" VerticalAlignment="Top" Width="181" />
                     <TextBox Height="385" HorizontalAlignment="Left" Margin="0,126,0,0" Name="overviewTextBox1" InputScope="Text" Text="{Binding SelectedIdea.Overview, Mode=TwoWay}" VerticalAlignment="Top" Width="460" TextWrapping="Wrap" DataContext="{Binding}" AcceptsReturn="True" MaxHeight="385" MaxLength="330" />
-                    <toolkit:ListPicker x:Name="defaultListPicker" FullModeHeader="Share via" Visibility="Collapsed" ExpansionMode="FullScreenOnly" FontSize="36" FullModeItemTemplate="{StaticResource PickerFullModeItemTemplate}" SelectionChanged="defaultListPicker_SelectionChanged"/>
+                    <toolkit:ListPicker x:Name="defaultListPicker" Header="share via" FullModeHeader="Share via" Visibility="Collapsed" ExpansionMode="FullScreenOnly" FontSize="36" FullModeItemTemplate="{StaticResource PickerFullModeItemTemplate}" SelectionChanged="defaultListPicker_SelectionChanged"/>
                 </Grid>
             </controls:PivotItem>
 
@@ -214,7 +214,7 @@
             <controls:PivotItem Header="other notes">
                 <Grid>
                     <ScrollViewer>
-                        <TextBox  Height="530" HorizontalAlignment="Left" InputScope="Text" Margin="-6,-7,0,0" Name="notesTextBox" Text="" VerticalAlignment="Top" Width="460" AcceptsReturn="True" TextWrapping="Wrap" MaxHeight="530" MaxLength="462" />
+                        <TextBox  Height="530" HorizontalAlignment="Left" InputScope="Text" Margin="-6,-7,0,0" Name="notesTextBox" Text="{Binding SelectedIdea.Notes, Mode=TwoWay}"  DataContext="{Binding}" VerticalAlignment="Top" Width="460" AcceptsReturn="True" TextWrapping="Wrap" MaxHeight="530" MaxLength="462" />
                     </ScrollViewer>
                 </Grid>
             </controls:PivotItem>
@@ -260,11 +260,11 @@
                     Text="Share idea via SMS"
                     Click="shareIdeaSMS_Click"/>-->
 
-                <!--<shell:ApplicationBarMenuItem
+                <shell:ApplicationBarMenuItem
                     x:Name="pinToStartButton"
                     Text="pin to start menu"
                     Click="pinToStartButton_Click"
-                    />-->
+                    />
 
             </shell:ApplicationBar.MenuItems>
 

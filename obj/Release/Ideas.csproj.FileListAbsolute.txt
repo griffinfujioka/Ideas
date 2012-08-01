@@ -49,3 +49,7 @@ C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\obj\Release\I
 C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\obj\Release\Ideas.dll
 C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\obj\Release\Ideas.pdb
 C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\obj\Release\XapCacheFile.xml
+C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\obj\Release\ContributorsPages\FujiokaPage.g.i.cs
+C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\obj\Release\ContributorsPages\HintzkePage.g.i.cs
+C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\obj\Release\Views\AboutPage.g.i.cs
+C:\Users\Griffin\Documents\Visual Studio 2010\Projects\Ideas\Ideas\obj\Release\ContributorsPages\HeyduckPage.g.i.cs

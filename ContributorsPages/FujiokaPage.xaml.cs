@@ -51,5 +51,15 @@ namespace Ideas.ContributorsPages
             browserTask.Show();
         }
         #endregion 
+
+        private void hyperlinkButton1_Click(object sender, RoutedEventArgs e)
+        {
+            WebBrowserTask browserTask = new WebBrowserTask();
+
+            browserTask.URL = "http://www.windowsphone.com/en-US/publishers/Griffin%20Fujioka?appid=17f6789f-95ce-4afa-8e48-3866768dc145&name=Griffin Fujioka";
+            browserTask.Show(); 
+        }
+
+
     }
 }
